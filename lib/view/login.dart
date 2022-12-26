@@ -277,7 +277,7 @@ class _LoginState extends State<Login> {
       top: true,
       bottom: false,
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(left: 15.0, right: 15),
@@ -286,7 +286,7 @@ class _LoginState extends State<Login> {
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(height: 30,),
-                Image.asset('assets/images/getStarted.png',
+                Image.asset('assets/images/login_header.png',
                   width: MediaQuery.of(context).size.width * 0.09,
                   height: MediaQuery.of(context).size.height * 0.09,),
                 const SizedBox(height: 30,),
@@ -298,14 +298,14 @@ class _LoginState extends State<Login> {
                     alignment: AlignmentDirectional.center,
                     children: [
                       Positioned(
-                        left: 60,
+                        left: 50,
                         bottom: 60,
                         child: Image.asset('assets/images/login1.png',
                           width: MediaQuery.of(context).size.width * 0.37,
                           height: MediaQuery.of(context).size.height * 0.37,),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 30.0, top: 60),
+                        padding: const EdgeInsets.only(left: 55.0, top: 60),
 
                         child: Image.asset('assets/images/login2.png',
                           width: MediaQuery.of(context).size.width * 0.37,
@@ -315,13 +315,13 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 const SizedBox(height: 30,),
-                titleText("Login now", context, 28),
+                titleText("Login Now", context, 26),
                 const SizedBox(height: 10,),
                 subTitleText("Please enter the details below to continue", context, 14),
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0, bottom: 20, left: 10, right: 10),
                   child: Container(
-                    height: 60,
+                    height: 55,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color:  colors.textFieldClr
@@ -330,37 +330,129 @@ class _LoginState extends State<Login> {
                     child: TextFormField(
                       controller: mobileController,
                       keyboardType: TextInputType.number,
+                      style:const  TextStyle(
+                          color: colors.fntClr
+                        //Theme.of(context).colorScheme.fontClr
+                      ),
                       maxLength: 10,
-                      decoration:  InputDecoration(
+                      decoration: const InputDecoration(
                           counterText: "",
-                          contentPadding: EdgeInsets.only(left: 15, top: 15),
-                          hintText: "Enter Mobile No.",
-                          hintStyle: TextStyle(color: colors.fntClr
-                           /*color:Theme.of(context).colorScheme.fontColor,*/
+                          contentPadding: EdgeInsets.only(left: 15, top: 5),
+                          hintText: "Enter Mobile no.",
+                          hintStyle:  TextStyle(
+                            fontSize: 14,
+                            color:  colors.fntClr,
+                            //Theme.of(context).colorScheme.fontClr
                           ),
-                          border: InputBorder.none,
+                          border: InputBorder.none
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  padding: const EdgeInsets.only(left: 10.0, right: 10, bottom: 20),
                   child: AppBtn(
                     title: "Send Authentication Code",
-                    onPress: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Verification()));
-                      // sendOtp(mobileController.text.toString());
-
+                    onPress: () {
+                      Navigator.push(context, (MaterialPageRoute(builder: (context) => Verification())));
+                      //
+                      // sendOtp();
                     },
                     height: 50,
                     width: MediaQuery.of(context).size.width,
                     fSize: 18,
                   ),
-                )
+                ),
+
               ],
             ),
           ),
         ),
+
+
+        // SingleChildScrollView(
+        //   child: Padding(
+        //     padding: const EdgeInsets.only(left: 15.0, right: 15),
+        //     child: Column(
+        //       crossAxisAlignment: CrossAxisAlignment.center,
+        //       // mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         const SizedBox(height: 30,),
+        //         Image.asset('assets/images/getStarted.png',
+        //           width: MediaQuery.of(context).size.width * 0.09,
+        //           height: MediaQuery.of(context).size.height * 0.09,),
+        //         const SizedBox(height: 30,),
+        //         Container(
+        //           width: MediaQuery.of(context).size.width,
+        //           // height: MediaQuery.of(context).size.height * 0.45,
+        //           // height: MediaQuery.of(context).size.height * 0.5,
+        //           child: Stack(
+        //             alignment: AlignmentDirectional.center,
+        //             children: [
+        //               Positioned(
+        //                 left: 60,
+        //                 bottom: 60,
+        //                 child: Image.asset('assets/images/login1.png',
+        //                   width: MediaQuery.of(context).size.width * 0.37,
+        //                   height: MediaQuery.of(context).size.height * 0.37,),
+        //               ),
+        //               Padding(
+        //                 padding: const EdgeInsets.only(left: 30.0, top: 60),
+        //
+        //                 child: Image.asset('assets/images/login2.png',
+        //                   width: MediaQuery.of(context).size.width * 0.37,
+        //                   height: MediaQuery.of(context).size.height * 0.37,),
+        //               ),
+        //             ],
+        //           ),
+        //         ),
+        //         const SizedBox(height: 30,),
+        //         titleText("Login now", context, 28),
+        //         const SizedBox(height: 10,),
+        //         subTitleText("Please enter the details below to continue", context, 14),
+        //         Padding(
+        //           padding: const EdgeInsets.only(top: 20.0, bottom: 20, left: 10, right: 10),
+        //           child: Container(
+        //             height: 60,
+        //             decoration: BoxDecoration(
+        //                 borderRadius: BorderRadius.circular(10),
+        //                 color:  colors.textFieldClr
+        //               //Theme.of(context).colorScheme.gray,
+        //             ),
+        //             child: TextFormField(
+        //               controller: mobileController,
+        //               keyboardType: TextInputType.number,
+        //               maxLength: 10,
+        //               decoration:  InputDecoration(
+        //                   counterText: "",
+        //                   contentPadding: EdgeInsets.only(left: 15, top: 15),
+        //                   hintText: "Enter Mobile No.",
+        //                   hintStyle: TextStyle(color: colors.fntClr
+        //                    /*color:Theme.of(context).colorScheme.fontColor,*/
+        //                   ),
+        //                   border: InputBorder.none,
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //         Padding(
+        //           padding: const EdgeInsets.only(left: 10.0, right: 10),
+        //           child: AppBtn(
+        //             title: "Send Authentication Code",
+        //             onPress: (){
+        //               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Verification()));
+        //               // sendOtp(mobileController.text.toString());
+        //
+        //             },
+        //             height: 50,
+        //             width: MediaQuery.of(context).size.width,
+        //             fSize: 18,
+        //           ),
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        // ),
       ),
     );
   }

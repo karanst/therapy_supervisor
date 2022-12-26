@@ -328,7 +328,7 @@ Widget supportedCard(context, model, i, bool show) {
               show ?
               Container(
                 // alignment: Alignment.centerRight,
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 height: 30,
                 // width: 70,
                 decoration: BoxDecoration(
@@ -455,7 +455,7 @@ Widget jobDetailsCard(context, model, i) {
                           style: TextStyle(color: Theme.of(context).colorScheme.secColor),
                         ),
                         Icon(
-                          Icons.arrow_forward,
+                          Icons.arrow_forward_ios_rounded,
                           color: Theme.of(context).colorScheme.secColor,
                           size: 18,
                         )
@@ -854,17 +854,19 @@ Widget noteCard(context, model, i){
                     ),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 6,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       titleText("${model[i]['name']}", context, 14),
+                      const SizedBox(height: 5,),
                       subTitleText("${model[i]['time']}", context, 12)
                     ],
                   )
                 ],
               ),
+               const SizedBox(height: 10,),
                Text("Lorem Ipsum is simply dummy text of the Lorem Ipsum is Lorem Ipsum is simply dummy text of",
                 maxLines: 3,
                 style: TextStyle(
