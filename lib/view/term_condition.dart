@@ -27,7 +27,7 @@ class _TermConditionState extends State<TermCondition> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600),
             ),),
-            const  Padding(padding: EdgeInsets.only(left: 12,right: 12,bottom: 8,top: 3),child: Text("Last update 2022",
+            const  Padding(padding: EdgeInsets.only(left: 12,right: 12,bottom: 8,top: 3),child: Text("Last update 2022 ",
                 style: TextStyle(
                     color: colors.subTxtClr,
                     fontWeight: FontWeight.w500,

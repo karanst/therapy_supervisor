@@ -73,7 +73,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Contact No*",style: TextStyle(color: Theme.of(context).colorScheme.fontClr,fontWeight: FontWeight.w500),),
+                              Text("Contact No.",style: TextStyle(color: Theme.of(context).colorScheme.fontClr,fontWeight: FontWeight.w500),),
                               Text("+619686595848",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w500,fontSize: 15),)
                             ],
                           ),
@@ -170,7 +170,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("Invoice Id",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w600,fontSize: 15),),
+                                Text("Invoice ID",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w600,fontSize: 15),),
                                 Text("5266952",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w600,fontSize: 15),)
                               ],
                             ),
@@ -179,7 +179,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                               Text("Invoice Status",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w600,fontSize: 15),),
+                               Text("Invoice status",style: TextStyle(color: Theme.of(context).colorScheme.fontColor,fontWeight: FontWeight.w600,fontSize: 15),),
                                 Container(
                                   height: 35,
                                   width: 100,
@@ -218,7 +218,7 @@ class _InvoiceDetailState extends State<InvoiceDetail> {
                       lineLength: double.infinity,
                       lineThickness: 1.0,
                       dashLength: 4.0,
-                      dashColor: colors.activeColor,
+                      dashColor: colors.activeColor.withOpacity(0.3),
                       dashRadius: 0.0,
                       dashGapLength: 4.0,
                       dashGapColor: Colors.transparent,

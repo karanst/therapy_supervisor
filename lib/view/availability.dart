@@ -81,12 +81,41 @@ class _AvailabilityState extends State<Availability> {
       child: Column(
         children: [
           Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width,
-            child: SfDateRangePicker(),
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.lightWhite,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      offset: Offset(0.75, 0.75)
+                  )
+                ],
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: SfDateRangePicker(
+              selectionMode: DateRangePickerSelectionMode.range,
+              initialDisplayDate: DateTime.now(),
+              initialSelectedDate: DateTime.now(),
+              selectionColor: colors.primary,
+              startRangeSelectionColor: colors.primary,
+              endRangeSelectionColor: colors.primary,
+              rangeSelectionColor: colors.primary,
+              rangeTextStyle: const TextStyle(color: Colors.white, fontSize: 14),
+              enablePastDates: false,
+              headerHeight: 50,
+              headerStyle: const DateRangePickerHeaderStyle(
+                  backgroundColor: colors.primary,
+                  textAlign: TextAlign.center,
+                  textStyle: TextStyle(
+                      color: colors.whit,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600
+                  )
+              ),
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 5.0, bottom: 10),
+            padding: const EdgeInsets.only(top: 15.0, bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -100,9 +129,19 @@ class _AvailabilityState extends State<Availability> {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.fontClr/*.withOpacity(0.5)*/)),
+                        color: Theme.of(context).colorScheme.lightWhite,
+                        borderRadius: BorderRadius.circular(7),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 5.0,
+                              offset: Offset(0.75, 0.75)
+                          )
+                        ],
+                        // border: Border.all(
+                        //   color: Theme.of(context).colorScheme.fontClr,
+                        // )
+                      ),
                       child:
                       selectedTime1 != null
                           ?
@@ -110,8 +149,10 @@ class _AvailabilityState extends State<Availability> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("${selectedTime1!.format(context)}",
-                            style: TextStyle(color: Theme.of(context).colorScheme.fontClr),),
-                             Icon(Icons.access_time,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.fontClr,
+                            ),),
+                          Icon(Icons.access_time,
                             color: Theme.of(context).colorScheme.fontClr,)
                         ],
                       )
@@ -121,7 +162,7 @@ class _AvailabilityState extends State<Availability> {
                           Text(
                             "Start Time",
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.fontClr/*.withOpacity(0.5)*/,
+                                color: Theme.of(context).colorScheme.fontClr,
                                 fontSize: 15),
                           ),
                           Icon(Icons.access_time,
@@ -153,9 +194,18 @@ class _AvailabilityState extends State<Availability> {
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       alignment: Alignment.centerLeft,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.fontClr/*.withOpacity(0.5)*/)),
+                        borderRadius: BorderRadius.circular(7),
+                        color: Theme.of(context).colorScheme.lightWhite,
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 5.0,
+                              offset: Offset(0.75, 0.75)
+                          )
+                        ],
+                        // border: Border.all(
+                        //   color: Theme.of(context).colorScheme.fontClr,)
+                      ),
                       child:
                       selectedTime2 != null
                           ?
@@ -163,8 +213,10 @@ class _AvailabilityState extends State<Availability> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text("${selectedTime2!.format(context)}",
-                            style: TextStyle(color: Theme.of(context).colorScheme.fontClr),),
-                            Icon(Icons.access_time,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.fontClr,
+                            ),),
+                          Icon(Icons.access_time,
                             color: Theme.of(context).colorScheme.fontClr,)
                         ],
                       )
@@ -174,11 +226,11 @@ class _AvailabilityState extends State<Availability> {
                           Text(
                             "End Time",
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.fontClr/*.withOpacity(0.5)*/,
+                                color: Theme.of(context).colorScheme.fontClr,
                                 fontSize: 15),
                           ),
-                            Icon(Icons.access_time,
-                            color: Theme.of(context).colorScheme.fontClr,)
+                          const   Icon(Icons.access_time,
+                            color: colors.subTxtClr,)
                         ],
                       )),
                   // TextFormField( controller: locationController,
@@ -203,7 +255,9 @@ class _AvailabilityState extends State<Availability> {
           Padding(
             padding: const EdgeInsets.only(top: 20.0, bottom: 20),
             child: AppBtn(
-              onPress: (){},
+              onPress: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewAvailability()));
+              },
               title: "Update",
               width: MediaQuery.of(context).size.width,
               height: 45,
@@ -212,7 +266,7 @@ class _AvailabilityState extends State<Availability> {
           ),
           CustomAppBtn(
             onPress: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ViewAvailability()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewAvailability()));
             },
             title: "View Availability",
             height: 45,
@@ -230,9 +284,38 @@ class _AvailabilityState extends State<Availability> {
       child: Column(
         children: [
           Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width,
-            child: SfDateRangePicker(),
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.lightWhite,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                      color: Colors.grey,
+                      blurRadius: 5.0,
+                      offset: Offset(0.75, 0.75)
+                  )
+                ],
+                borderRadius: BorderRadius.circular(10)
+            ),
+            child: SfDateRangePicker(
+              selectionMode: DateRangePickerSelectionMode.range,
+              initialDisplayDate: DateTime.now(),
+              initialSelectedDate: DateTime.now(),
+              selectionColor: colors.primary,
+              startRangeSelectionColor: colors.primary,
+              endRangeSelectionColor: colors.primary,
+              rangeSelectionColor: colors.primary,
+              rangeTextStyle: const TextStyle(color: Colors.white, fontSize: 14),
+              enablePastDates: false,
+              headerHeight: 50,
+              headerStyle: const DateRangePickerHeaderStyle(
+                  backgroundColor: colors.primary,
+                  textAlign: TextAlign.center,
+                  textStyle: TextStyle(
+                      color: colors.whit,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600
+                  )
+              ),
+            ),
           ),
 
           Padding(
@@ -263,8 +346,8 @@ class _AvailabilityState extends State<Availability> {
               initialIndex: 0,
               child: Column(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  Card(
+                    elevation : 2,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 50,

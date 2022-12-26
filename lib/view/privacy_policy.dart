@@ -26,7 +26,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600),
             ),),
-          const  Padding(padding: EdgeInsets.only(left: 12,right: 12,bottom: 8,top: 3),child: Text("Last update 2022",
+          const  Padding(padding: EdgeInsets.only(left: 12,right: 12,bottom: 8,top: 3),child: Text("Last update December 2022",
               style: TextStyle(
                   color: colors.subTxtClr,
                   fontWeight: FontWeight.w500,

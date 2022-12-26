@@ -46,7 +46,7 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colors.primary,
-      appBar: customAppBar("Profile Details", context),
+      appBar: customAppBar("Client Details", context),
       body: SingleChildScrollView(
         child: Column(
           children: [

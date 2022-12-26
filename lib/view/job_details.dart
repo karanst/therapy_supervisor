@@ -62,12 +62,11 @@ class JobDetails extends StatelessWidget {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileDetails()));
                       },
                       child:
-                       Text("View Profile",style:
+                       Text("View Profile", style:
                       TextStyle(
                           fontSize: 14,
                           decoration: TextDecoration.underline,
                           color: Theme.of(context).colorScheme.secColor,
-
                       ),)),
                 ),
                  Row(

@@ -262,7 +262,7 @@ class _HomeState extends State<Home> {
 
   _secondHeader(){
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
+      padding: const EdgeInsets.only(top: 20.0,left: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -328,7 +328,7 @@ class _HomeState extends State<Home> {
               children: <Widget>[
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20
+                  padding: const EdgeInsets.only(top: 20,right: 8
                     // circleRadius / 2.0
                   ),
                   child:  Card(
@@ -469,7 +469,7 @@ class _HomeState extends State<Home> {
                     )
                   ],
                 ),
-                const SizedBox(height: 30,),
+                const SizedBox(height: 50,),
                 drawerItem('assets/icons/availability.png', "Availability", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Availability()));
                 }),
@@ -479,8 +479,8 @@ class _HomeState extends State<Home> {
                 drawerItem('assets/icons/outlook.png', "Outlook", (){
                 }),
                 drawerItem('assets/icons/savePoint.png', "Sharepoint", (){}),
-                drawerItem('assets/icons/loom.png', "Loom", (){}),
                 drawerItem('assets/icons/skool.png', "Skool", (){}),
+                drawerItem('assets/icons/loom.png', "Loom", (){}),
                 drawerItem('assets/icons/faq.png', "FAQ", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> FaqScreen()));
                 }),
@@ -490,7 +490,7 @@ class _HomeState extends State<Home> {
                 drawerItem('assets/icons/termCondition.png', "Terms & Conditions", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> TermCondition()));
                 }),
-                const SizedBox(height: 30,),
+                const SizedBox(height: 20,),
                 drawerItem('assets/icons/logout.png', "Logout", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
                 }),
