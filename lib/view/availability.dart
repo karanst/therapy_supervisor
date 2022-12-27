@@ -337,6 +337,7 @@ class _AvailabilityState extends State<Availability> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.simmerHigh,
       appBar: customAppBar("Availability", context),
       body: Column(
         children: [
@@ -347,7 +348,7 @@ class _AvailabilityState extends State<Availability> {
               child: Column(
                 children: <Widget>[
                   Card(
-                    elevation : 2,
+                    elevation : 0,
                     child: Container(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
@@ -386,6 +387,7 @@ class _AvailabilityState extends State<Availability> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 15,),
                   Expanded(
                     child: TabBarView(
                       children: <Widget>[

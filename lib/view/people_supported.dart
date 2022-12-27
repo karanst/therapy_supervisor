@@ -26,7 +26,7 @@ class PeopleSupported extends StatelessWidget {
                   model: supportedPeople,
                 )));
               },
-                child: supportedCard(context, supportedPeople, index, true));
+                child: supportedCard(context, supportedPeople, index, true, false));
           }),
     );
   }

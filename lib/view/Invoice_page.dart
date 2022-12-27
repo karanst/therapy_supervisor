@@ -14,7 +14,7 @@ class _InvoicePageState extends State<InvoicePage> {
   int _currentIndex = 0;
   _selectTimePeriod() {
     return Padding(
-      padding: const EdgeInsets.symmetric( vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -28,7 +28,7 @@ class _InvoicePageState extends State<InvoicePage> {
               height: 30,
               width: 100,
               decoration: BoxDecoration(
-                  color: _currentIndex == 0 ? colors.activeColor :  Theme.of(context).colorScheme.lightWhite,
+                  color: _currentIndex == 0 ? colors.green : Theme.of(context).colorScheme.gray,
                   borderRadius: BorderRadius.circular(30)),
               child: Center(
                 child: Text(
@@ -36,7 +36,8 @@ class _InvoicePageState extends State<InvoicePage> {
                   style: TextStyle(
                       color: _currentIndex == 0
                           ? colors.whit
-                          : Theme.of(context).colorScheme.fontClr,
+                          : colors.fntClr,
+                      //Theme.of(context).colorScheme.lightWhite,
                       fontSize: 14),
                 ),
               ),
@@ -52,7 +53,7 @@ class _InvoicePageState extends State<InvoicePage> {
               height: 30,
               width: 100,
               decoration: BoxDecoration(
-                  color: _currentIndex == 1 ? colors.primary :  Theme.of(context).colorScheme.lightWhite,
+                  color: _currentIndex == 1 ? colors.primary :  Theme.of(context).colorScheme.gray,
                   borderRadius: BorderRadius.circular(30)),
               child: Center(
                 child: Text(
@@ -60,7 +61,7 @@ class _InvoicePageState extends State<InvoicePage> {
                   style: TextStyle(
                       color: _currentIndex == 1
                           ? colors.whit
-                          : Theme.of(context).colorScheme.fontClr,
+                          : colors.fntClr,
                       fontSize: 14),
                 ),
               ),
@@ -76,7 +77,7 @@ class _InvoicePageState extends State<InvoicePage> {
               height: 30,
               width: 100,
               decoration: BoxDecoration(
-                  color: _currentIndex == 2 ? colors.red :  Theme.of(context).colorScheme.lightWhite,
+                  color: _currentIndex == 2 ? colors.red :  Theme.of(context).colorScheme.gray,
                   borderRadius: BorderRadius.circular(30)),
               child: Center(
                 child: Text(
@@ -84,7 +85,7 @@ class _InvoicePageState extends State<InvoicePage> {
                   style: TextStyle(
                       color: _currentIndex == 2
                           ? colors.whit
-                          : Theme.of(context).colorScheme.fontClr,
+                          : colors.fntClr,
                       fontSize: 14),
                 ),
               ),
@@ -121,41 +122,42 @@ class _InvoicePageState extends State<InvoicePage> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: colors.primary,
-        title: Text("Invoice History",style: TextStyle(color: colors.whiteTemp,fontSize: 18,fontWeight: FontWeight.w500),),
+        title: const  Text("Invoice History",style: TextStyle(color: colors.whiteTemp,fontSize: 18,fontWeight: FontWeight.w500),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0, right: 20),
-        child: Container(
-          child:ListView(
-            children: [
-              _selectTimePeriod(),
-            _currentIndex == 0 ?  ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: paidList.length,
-                  itemBuilder: (context, index){
-                    return invoiceCard(
-                        context, paidList, index
-                    );
-                  }) : _currentIndex == 1 ? ListView.builder(
+        child: Column(
+          children: [
+            _selectTimePeriod(),
+          _currentIndex == 0 ?  ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: pendingList.length,
+                itemCount: paidList.length,
                 itemBuilder: (context, index){
                   return invoiceCard(
-                      context, pendingList, index
+                      context, paidList, index,
+                    "Paid"
                   );
-                })  :ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: rejectList.length,
-                itemBuilder: (context, index){
-                  return invoiceCard(
-                      context, rejectList, index
-                  );
-                })
-            ],
-          ) ,
+                }) : _currentIndex == 1 ? ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: pendingList.length,
+              itemBuilder: (context, index){
+                return invoiceCard(
+                    context, pendingList, index,
+                  "Pending"
+                );
+              })  :ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: rejectList.length,
+              itemBuilder: (context, index){
+                return invoiceCard(
+                    context, rejectList, index,
+                  "Rejected"
+                );
+              })
+          ],
         ),
       ),
     );

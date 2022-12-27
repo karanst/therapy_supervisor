@@ -5,8 +5,8 @@ import 'package:therapy/view/appBar/appBar.dart';
 import 'package:therapy/view/buttons/appButton.dart';
 
 class ViewNotes extends StatefulWidget {
-  bool isAdd;
-  ViewNotes({Key? key, required this.isAdd}) : super(key: key);
+  bool? isAdd;
+  ViewNotes({Key? key,  this.isAdd}) : super(key: key);
 
   @override
   State<ViewNotes> createState() => _ViewNotesState();
@@ -36,7 +36,7 @@ class _ViewNotesState extends State<ViewNotes> {
                   );
                 }),
           ),
-          widget.isAdd ?
+          widget.isAdd! ?
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: AppBtn(

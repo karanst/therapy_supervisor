@@ -18,7 +18,7 @@ class PeopleSupport extends StatelessWidget {
       body: ListView.builder(
           itemCount: supportedPeople.length,
           itemBuilder: (context, index){
-            return supportedCard(context, supportedPeople, index, true);
+            return supportedCard(context, supportedPeople, index, true, true);
           }),
     );
   }

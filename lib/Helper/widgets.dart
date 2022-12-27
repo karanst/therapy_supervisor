@@ -78,7 +78,7 @@ Widget textField(context, controller,String title, double height){
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Padding(
-        padding:  EdgeInsets.only(left: 5.0),
+        padding:  const EdgeInsets.only(left: 15.0, top: 5),
         child: Text(
           title,
           style: TextStyle(fontSize: 15,color: Theme.of(context).colorScheme.fontColor /*color: colors.fntClr*/, fontWeight: FontWeight.w500),

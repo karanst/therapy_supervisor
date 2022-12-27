@@ -32,12 +32,15 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar("Notifications", context),
-      body: ListView.builder(
-        shrinkWrap: true,
-        itemCount: notifications.length,
-          itemBuilder: (context, index){
-        return notificationCard(context, notifications, index);
-      }),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15.0),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: notifications.length,
+            itemBuilder: (context, index){
+          return notificationCard(context, notifications, index);
+        }),
+      ),
     );
   }
 }

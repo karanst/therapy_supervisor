@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:therapy/Helper/card_widgets.dart';
 import 'package:therapy/Helper/colors.dart';
@@ -13,40 +15,69 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+
+
   _profileHeader(){
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 5.0),
       child: Container(
         child: Stack(
           alignment: Alignment.center,
           children: [
             ClipPath(
-            clipper: SkewCut(),
-        child:
-            Container(
-              height: MediaQuery.of(context).size.height/3.4,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secColor.withOpacity(0.7)
-              ),
-              // child: Image.asset("assets"),
-            )
+                clipper: SkewCut(),
+                child:
+                Container(
+                  height: MediaQuery.of(context).size.height/3.0,
+                  decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          image: AssetImage(
+                              "assets/images/profile_placeholder.png"
+                          ),
+                          fit: BoxFit.fill
+                      ),
+                      color: Theme.of(context).colorScheme.secColor.withOpacity(0.7)
+                  ),
+                  // child: Image.asset("assets"),
+                )
             ),
 
             Positioned(
-              top: 120,
+              top: Platform.isAndroid ? 120 : 150,
               // left: 120,
               child: Center(
                 child: CircleAvatar(
-                  radius: 50,
-                  child: Image.asset("assets/images/profile_placeholder.png"),
+                  radius: 65,
+                  child: Image.asset("assets/images/profile.png"),
                 ),
               ),
             ),
+
+            // Positioned(
+            //   top: 175,
+            //   right: 120,
+            //   child: Card(
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(40)
+            //     ),
+            //     child: Center(
+            //       child: CircleAvatar(
+            //         backgroundColor: colors.whit,
+            //         radius: 17,
+            //         child: Image.asset("assets/icons/camera.png",
+            //         height: 20,
+            //         width: 20,),
+            //       ),
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),
     );
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +90,7 @@ class _ProfileState extends State<Profile> {
               fontSize: 24,
               fontWeight: FontWeight.w600
             ),),
+            const SizedBox(height: 20,),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.center,
             //   children: [
@@ -155,7 +187,7 @@ class SkewCut extends CustomClipper<Path> {
     final path = Path();
     path.lineTo(0, size.height);
 
-    path.lineTo(size.width , size.height- 60);
+    path.lineTo(size.width , size.height- 120);
     path.lineTo(size.width, 0);
     path.close();
 

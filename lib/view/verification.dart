@@ -69,7 +69,7 @@ class _VerificationState extends State<Verification> {
             // mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 40,),
-              subTitleText("Code has been sent to", context, 14),
+              subTitleText("Code has been sent to", context, 16),
               Padding(
                 padding: const EdgeInsets.only(top: 7.0, bottom: 40),
                 child: secTitleText("+61${widget.mobile}", context, 22),
@@ -129,11 +129,12 @@ class _VerificationState extends State<Verification> {
               ),
               const SizedBox(height: 20,),
               subTitleText("Haven't received the verification code?", context, 14),
-              textBtn(
-                      (){
-
-              },
-                  context),
+              TextButton(onPressed: (){}, child: secTitleText("Resend", context, 16),),
+              // textBtn(
+              //         (){
+              //
+              // },
+              //     context),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: AppBtn(

@@ -292,7 +292,7 @@ class _AddVisitHistoryState extends State<AddVisitHistory> {
         const Padding(
           padding:  EdgeInsets.only(left: 5.0),
           child: Text(
-            "Notes",
+            "Service Type",
             style: TextStyle(fontSize: 15, color: colors.fntClr),
           ),
         ),

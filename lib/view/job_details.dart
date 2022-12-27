@@ -3,12 +3,14 @@ import 'package:therapy/Helper/card_widgets.dart';
 import 'package:therapy/Helper/colors.dart';
 import 'package:therapy/Helper/widgets.dart';
 import 'package:therapy/view/appBar/appBar.dart';
+import 'package:therapy/view/notes/view_notes.dart';
 import 'package:therapy/view/profile_details.dart';
 
 class JobDetails extends StatelessWidget {
   final model;
   final  i;
-   JobDetails({Key? key, this.model, this.i}) : super(key: key);
+  final bool? isClient;
+   JobDetails({Key? key, this.model, this.i, this.isClient}) : super(key: key);
 
 
   List<Map<String, dynamic>> jobs = [
@@ -48,7 +50,7 @@ class JobDetails extends StatelessWidget {
                   ),
                 ),
               Padding(
-                 padding:  EdgeInsets.only(top: 8.0),
+                 padding: const EdgeInsets.only(top: 8.0),
                  child:  Text("John Wick",
                     style:  TextStyle(color:Theme.of(context).colorScheme.fontColor,
                         fontSize: 20,
@@ -59,7 +61,9 @@ class JobDetails extends StatelessWidget {
                   height: 32,
                   child: TextButton(
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileDetails()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ProfileDetails(
+                          isClient: isClient
+                        )));
                       },
                       child:
                        Text("View Profile", style:
@@ -103,13 +107,16 @@ class JobDetails extends StatelessWidget {
                     itemBuilder: (context, index){
                   return assignedCard(context, assignDrList, index);
                 }),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: jobs.length,
                     itemBuilder: (context, index){
-                      return jobDetailsCard(context, jobs, index);
+                      return jobDetailsCard(context, jobs, index,
+                            (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ViewNotes(isAdd: isClient,)));
+                        },);
                     })
               ],
             ),

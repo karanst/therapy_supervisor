@@ -28,7 +28,7 @@ class _ViewScheduleState extends State<ViewSchedule> {
       appBar: customAppBar("Schedule", context),
       body: Column(
         children: [
-          supportedCard(context, supportedPeople, 0, false),
+          supportedCard(context, supportedPeople, 0, false, false),
           Expanded(
             child: ListView.builder(
               itemCount: sessions.length,

@@ -238,7 +238,7 @@ class _HomeState extends State<Home> {
           RichText(
             text: TextSpan(
               text: 'Hi! ',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.w600,
                 color: colors.primary
@@ -262,7 +262,7 @@ class _HomeState extends State<Home> {
 
   _secondHeader(){
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0,left: 8),
+      padding: const EdgeInsets.only(left: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -274,26 +274,31 @@ class _HomeState extends State<Home> {
           alignment: Alignment.topCenter,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20
+              padding: const EdgeInsets.only(top: 25
              // circleRadius / 2.0
               ),
-              child:  Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15)
+              child:  Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.lightWhite,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.grey,
+                        blurRadius: 8.0,
+                        offset: Offset(0.75, 0.00)
+                    )
+                  ],
                 ),
-                child: Container(
-                  padding: const EdgeInsets.all(15),
-                  height: 120,
-                  width: MediaQuery.of(context).size.width/2.5,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      titleText("02", context, 28),
-                      const SizedBox(height: 15,),
-                      titleText("Complete Supervision", context, 12)
-                    ],
-                  ),
+                height: 120,
+                width: MediaQuery.of(context).size.width/2.5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    titleText("02", context, 28),
+                    const SizedBox(height: 15,),
+                    titleText("Complete Supervision", context, 12)
+                  ],
                 ),
               ),
             ),
@@ -328,26 +333,31 @@ class _HomeState extends State<Home> {
               children: <Widget>[
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20,right: 8
+                  padding: const EdgeInsets.only(top: 25,right: 8
                     // circleRadius / 2.0
                   ),
-                  child:  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)
+                  child:  Container(
+                    padding: const EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.lightWhite,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 8.0,
+                            offset: Offset(0.75, 0.00)
+                        )
+                      ],
                     ),
-                    elevation: 4,
-                    child: Container(
-                      padding: const EdgeInsets.all(15),
-                      height: 120,
-                      width: MediaQuery.of(context).size.width/2.5,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          titleText("02", context, 28),
-                          const SizedBox(height: 15,),
-                          titleText("Active Supervision", context, 12)
-                        ],
-                      ),
+                    height: 120,
+                    width: MediaQuery.of(context).size.width/2.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        titleText("02", context, 28),
+                        const SizedBox(height: 15,),
+                        titleText("Active Supervision", context, 12)
+                      ],
                     ),
                   ),
                 ),
@@ -490,7 +500,6 @@ class _HomeState extends State<Home> {
                 drawerItem('assets/icons/termCondition.png', "Terms & Conditions", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> TermCondition()));
                 }),
-                const SizedBox(height: 20,),
                 drawerItem('assets/icons/logout.png', "Logout", (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Login()));
                 }),

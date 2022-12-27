@@ -46,14 +46,15 @@ class GetStarted extends StatelessWidget {
                 ),
               ),
               titleText("Lorem Ipsum simply", context, 28),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.only(left: 60.0, right: 60),
                 child: subTitleText("Lorem ipsum is dummy text used in laying out print, graphic or web designs. ", context, 14),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0, bottom: 20),
-                child: Image.asset('assets/images/load.png'),
+                child: Image.asset('assets/images/load.png',
+                height: 25, width: 25,),
               ),
               AppBtn(
                 title: "Get Started",
@@ -61,7 +62,7 @@ class GetStarted extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> const Login()));
                 },
                 height: 50,
-                width: 150,
+                width: 180,
                 fSize: 18,
               )
             ],

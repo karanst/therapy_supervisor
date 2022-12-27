@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:therapy/Helper/colors.dart';
 import 'package:therapy/Helper/widgets.dart';
@@ -17,9 +19,10 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController emailController = TextEditingController();
   TextEditingController aboutController = TextEditingController();
   TextEditingController fullNameController  = TextEditingController();
+
   _profileHeader(){
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 5.0),
       child: Container(
         child: Stack(
           alignment: Alignment.center,
@@ -28,29 +31,51 @@ class _EditProfileState extends State<EditProfile> {
                 clipper: SkewCut(),
                 child:
                 Container(
-                  height: MediaQuery.of(context).size.height/3.4,
+                  height: MediaQuery.of(context).size.height/3.0,
                   decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          image: AssetImage(
+                              "assets/images/profile_placeholder.png"
+                          ),
+                          fit: BoxFit.fill
+                      ),
                       color: Theme.of(context).colorScheme.secColor.withOpacity(0.7)
                   ),
                   // child: Image.asset("assets"),
                 )
             ),
 
+
+
             Positioned(
-              top: 120,
+              top: Platform.isAndroid ? 125 : 150,
               // left: 120,
               child: Center(
                 child: CircleAvatar(
-                  radius: 50,
-                  child: Image.asset("assets/images/profile_placeholder.png"),
+                  radius: 65,
+                  child: Image.asset("assets/images/profile.png"),
                 ),
               ),
             ),
+            Positioned(
+              top: Platform.isAndroid ? 130 : 150,
+              // left: 120,
+              child: Center(
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 65,
+                  child: Image.asset("assets/icons/camera.png"),
+                ),
+              ),
+            ),
+
+
           ],
         ),
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

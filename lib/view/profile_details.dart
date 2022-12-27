@@ -40,13 +40,14 @@ import 'package:therapy/view/appBar/appBar.dart';
 import 'package:therapy/view/buttons/appButton.dart';
 
 class ProfileDetails extends StatelessWidget {
-  const ProfileDetails({Key? key}) : super(key: key);
+  final bool? isClient;
+  const ProfileDetails({Key? key, this.isClient}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colors.primary,
-      appBar: customAppBar("Client Details", context),
+      appBar: customAppBar(isClient == true ? "Client Details":"Profile Details", context),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -70,7 +71,7 @@ class ProfileDetails extends StatelessWidget {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * .15,
+                              height: MediaQuery.of(context).size.height * .10,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -134,7 +135,7 @@ class ProfileDetails extends StatelessWidget {
                             Container(
                                 padding: const EdgeInsets.all(12),
                                 width: MediaQuery.of(context).size.width,
-                                height: MediaQuery.of(context).size.height * .23,
+                                // height: MediaQuery.of(context).size.height * .23,
                                 decoration: BoxDecoration(
                                     color: Colors.grey[100],
                                     borderRadius: BorderRadius.circular(10)),
@@ -152,7 +153,7 @@ class ProfileDetails extends StatelessWidget {
                       )),
                 ),
                 Positioned(
-                  top: MediaQuery.of(context).size.height * .04,
+                  top: MediaQuery.of(context).size.height * .035,
                   // left: MediaQuery.of(context).size.width * .38,
                   child: Center(
                     child: Container(
@@ -160,13 +161,14 @@ class ProfileDetails extends StatelessWidget {
                       child: CircleAvatar(
                         backgroundColor: colors.secondary1,
                         radius: MediaQuery.of(context).size.width * .2,
-                        child: Text(
-                          "JW",
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.secColor,
-                              fontSize: 35,
-                              fontWeight: FontWeight.w500),
-                        ),
+                        child: Image.asset("assets/images/profile3.png")
+                        // Text(
+                        //   "JW",
+                        //   style: TextStyle(
+                        //       color: Theme.of(context).colorScheme.secColor,
+                        //       fontSize: 35,
+                        //       fontWeight: FontWeight.w500),
+                        // ),
                       ),
                     ),
                   ),

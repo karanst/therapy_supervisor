@@ -109,12 +109,12 @@ Widget leaderCard(context, model, i, rank, coins) {
                 Text(
                   model[i]['name'],
                   style: const TextStyle(
-                      fontSize: 14, fontWeight: FontWeight.w500),
+                      fontSize: 15, fontWeight: FontWeight.w500),
                 ),
                 Text(
                   model[i]['date'],
                   style: const TextStyle(
-                      fontSize: 10,
+                      fontSize: 13,
                       color: colors.subTxtClr,
                       fontWeight: FontWeight.w500),
                 ),
@@ -223,64 +223,71 @@ Widget leaderCard(context, model, i, rank, coins) {
 Widget profileCard(context, double height, String label, content, iconImage) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0, left: 20, right: 20),
-    child: Card(
-      elevation: 5,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        height: height,
-        width: MediaQuery.of(context).size.width,
-        child: Center(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                iconImage,
-                height: 20,
-                width: 20,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    style:  TextStyle(color: Theme.of(context).colorScheme.fontColor,
-                        fontWeight: FontWeight.w600, fontSize: 14),
+    child: Container(
+     decoration :  BoxDecoration(
+          color: Theme.of(context).colorScheme.lightWhite,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.grey,
+                blurRadius: 5.0,
+                offset: Offset(0.75, 0.75)
+            )
+          ],
+          borderRadius: BorderRadius.circular(10)
+      ),
+      padding: const EdgeInsets.all(10),
+      height: height,
+      width: MediaQuery.of(context).size.width,
+      child: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              iconImage,
+              height: 20,
+              width: 20,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style:  TextStyle(color: Theme.of(context).colorScheme.fontColor,
+                      fontWeight: FontWeight.w600, fontSize: 14),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 1.5,
+                  child: Text(
+                    content,
+                    maxLines: 4,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.fontClr,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12),
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    child: Text(
-                      content,
-                      maxLines: 4,
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.fontClr,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
+                )
+              ],
+            )
+          ],
         ),
       ),
     ),
   );
 }
 
-Widget supportedCard(context, model, i, bool show) {
+Widget supportedCard(context, model, i, bool show, bool isClient) {
   return Padding(
     padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
     child: InkWell(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> JobDetails()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=> JobDetails(isClient : isClient)));
       },
       child: Card(
         elevation: 3,
@@ -359,116 +366,246 @@ Widget supportedCard(context, model, i, bool show) {
   );
 }
 
-Widget jobDetailsCard(context, model, i) {
+Widget jobDetailsCard(context, model, i,  onPress) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15.0),
-    child: Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 3,
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 60,
-                  width: 60,
-                  child: Card(
-                    color: colors.secondary1,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Center(
-                      child: Text(
-                        "${model[i]['day']}",
-                        style:  TextStyle(
-                            color: Theme.of(context).colorScheme.secColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20),
-                      ),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        color: Theme.of(context).colorScheme.lightWhite,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.grey,
+              blurRadius: 8.0,
+              offset: Offset(0.75, 0.75)
+          )
+        ],
+      ),
+      padding: const EdgeInsets.all(8),
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 60,
+                width: 60,
+                child: Card(
+                  color: colors.secondary1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Center(
+                    child: Text(
+                      "${model[i]['day']}",
+                      style: const TextStyle(
+                          color: colors.secondary,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20),
                     ),
                   ),
                 ),
-                Column(
-                  children: [
-                     Text(
-                      "Time",
-                      style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    subTitleText("${model[i]['time']}", context, 14),
-                  ],
-                ),
-                Column(
-                  children: [
+              ),
+
+              Column(
+                children: [
+                  Text(
+                    "Time",
+                    style: TextStyle(fontWeight: FontWeight.w500,color: Theme.of(context).colorScheme.fontColor),
+                  ),
+                  const SizedBox(height: 8,),
+                  subTitleText("${model[i]['time']}", context, 14),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    "Hours",
+                    style: TextStyle(fontWeight: FontWeight.w500,color: Theme.of(context).colorScheme.fontColor),
+                  ),
+                  const SizedBox(height: 8,),
+                  subTitleText("${model[i]['hours']}", context, 14),
+                ],
+              ),
+              Column(
+                children: [
+                  Text(
+                    "Date",
+                    style: TextStyle(fontWeight: FontWeight.w500,color: Theme.of(context).colorScheme.fontColor),
+                  ),
+                  const SizedBox(height: 8,),
+                  subTitleText("${model[i]['date']}", context, 13),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          subTitleText("Description", context, 13),
+          const SizedBox(
+            height: 15,
+          ),
+          Container(
+              padding: const EdgeInsets.all(10),
+              width: MediaQuery.of(context).size.width,
+              height: 80,
+              decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(10)),
+              child: const Center(
+                  child: Text(
+                    "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content",
+                    maxLines: 4,
+                    style: TextStyle(color: colors.subTxtClr, fontSize: 13),
+                  ))),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                  onPressed: onPress,
+                  child: Row(
+                    children:  [
+                      // isNote ?
                     Text(
-                      "Hours",
-                      style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    subTitleText("${model[i]['hours']}", context, 14),
-                  ],
-                ),
-                Column(
-                  children: [
-                     Text(
-                      "Date",
-                      style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    subTitleText("${model[i]['date']}", context, 13),
-                  ],
-                ),
-              ],
-            ),
-            subTitleText("Description", context, 13),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-                padding: const EdgeInsets.all(10),
-                width: MediaQuery.of(context).size.width,
-                height: 80,
-                decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Center(
-                    child: Text(
-                  "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content",
-                  maxLines: 4,
-                  style: TextStyle(color: colors.subTxtClr, fontSize: 13),
-                ))),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewNotes(isAdd: true,)));
-                    },
-                    child: Row(
-                      children:  [
-                        Text(
-                          "View Notes ",
-                          style: TextStyle(color: Theme.of(context).colorScheme.secColor),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: Theme.of(context).colorScheme.secColor,
-                          size: 18,
-                        )
-                      ],
-                    ))
-              ],
-            )
-          ],
-        ),
+                        "View Notes",
+                        style: TextStyle(color: Theme.of(context).colorScheme.secColor,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    // :
+                      // Text(
+                      //   "Submit Notes",
+                      //   style: TextStyle(
+                      //       color: Theme.of(context).colorScheme.secColor,
+                      //       fontWeight: FontWeight.w600
+                      //   ),
+                      // ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Theme.of(context).colorScheme.secColor,
+                        size: 18,
+                      )
+                    ],
+                  ))
+            ],
+          )
+        ],
       ),
     ),
   );
 }
+
+// Widget jobDetailsCard(context, model, i) {
+//   return Padding(
+//     padding: const EdgeInsets.only(bottom: 15.0),
+//     child: Card(
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+//       elevation: 3,
+//       child: Container(
+//         padding: const EdgeInsets.all(8),
+//         width: MediaQuery.of(context).size.width,
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Container(
+//                   height: 60,
+//                   width: 60,
+//                   child: Card(
+//                     color: colors.secondary1,
+//                     shape: RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(12)),
+//                     child: Center(
+//                       child: Text(
+//                         "${model[i]['day']}",
+//                         style:  TextStyle(
+//                             color: Theme.of(context).colorScheme.secColor,
+//                             fontWeight: FontWeight.w600,
+//                             fontSize: 20),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//                 Column(
+//                   children: [
+//                      Text(
+//                       "Time",
+//                       style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
+//                           fontWeight: FontWeight.w500),
+//                     ),
+//                     subTitleText("${model[i]['time']}", context, 14),
+//                   ],
+//                 ),
+//                 Column(
+//                   children: [
+//                     Text(
+//                       "Hours",
+//                       style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
+//                           fontWeight: FontWeight.w500),
+//                     ),
+//                     subTitleText("${model[i]['hours']}", context, 14),
+//                   ],
+//                 ),
+//                 Column(
+//                   children: [
+//                      Text(
+//                       "Date",
+//                       style: TextStyle(color: Theme.of(context).colorScheme.fontColor,
+//                           fontWeight: FontWeight.w500),
+//                     ),
+//                     subTitleText("${model[i]['date']}", context, 13),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//             subTitleText("Description", context, 13),
+//             const SizedBox(
+//               height: 10,
+//             ),
+//             Container(
+//                 padding: const EdgeInsets.all(10),
+//                 width: MediaQuery.of(context).size.width,
+//                 height: 80,
+//                 decoration: BoxDecoration(
+//                     color: Colors.grey[100],
+//                     borderRadius: BorderRadius.circular(10)),
+//                 child: const Center(
+//                     child: Text(
+//                   "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content",
+//                   maxLines: 4,
+//                   style: TextStyle(color: colors.subTxtClr, fontSize: 13),
+//                 ))),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.end,
+//               children: [
+//                 TextButton(
+//                     onPressed: () {
+//                       Navigator.push(context, MaterialPageRoute(builder: (context)=> ViewNotes(isAdd: true,)));
+//                     },
+//                     child: Row(
+//                       children:  [
+//                         Text(
+//                           "View Notes ",
+//                           style: TextStyle(color: Theme.of(context).colorScheme.secColor),
+//                         ),
+//                         Icon(
+//                           Icons.arrow_forward_ios_rounded,
+//                           color: Theme.of(context).colorScheme.secColor,
+//                           size: 18,
+//                         )
+//                       ],
+//                     ))
+//               ],
+//             )
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 Widget notificationCard(context, model, i) {
   return Padding(
@@ -574,7 +711,7 @@ Widget myMenteesCard(context, model, i) {
       Navigator.push(context, MaterialPageRoute(builder: (context)=>  JobDetails() ));
     },
     child: Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(top : 5, bottom: 10.0),
       child: Stack(
         children: [
           Card(
@@ -582,7 +719,7 @@ Widget myMenteesCard(context, model, i) {
             shape: const StadiumBorder(),
             child: Container(
               padding: const EdgeInsets.only(left: 85, right: 20),
-              height: 60,
+              height: 70,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
               child: Row(
@@ -651,7 +788,7 @@ Widget myMenteesCard(context, model, i) {
 
 Widget assignedCard(context, model, i) {
   return Padding(
-    padding: const EdgeInsets.only(left: 10.0, right: 10, top: 10),
+    padding: const EdgeInsets.only( top: 10),
     child: InkWell(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => TherapistDetail()));
@@ -737,10 +874,12 @@ Widget assignedCard(context, model, i) {
   );
 }
 
-Widget invoiceCard(context, model, i) {
+Widget invoiceCard(context, model, i,String status) {
   return InkWell(
     onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=> const InvoiceDetail()));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>  InvoiceDetail(
+        status: status
+      )));
     },
     child: Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
