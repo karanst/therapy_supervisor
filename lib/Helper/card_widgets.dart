@@ -332,7 +332,7 @@ Widget supportedCard(context, model, i, bool show, bool isClient) {
                   ),
                 ],
               ),
-              show ?
+              // show ?
               Container(
                 // alignment: Alignment.centerRight,
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -348,7 +348,7 @@ Widget supportedCard(context, model, i, bool show, bool isClient) {
                   ),
                 ),
               )
-                  : const SizedBox.shrink(),
+                  // : const SizedBox.shrink(),
               // AppBtn(
               //   title: "View",
               //   onPress: (){
@@ -366,7 +366,7 @@ Widget supportedCard(context, model, i, bool show, bool isClient) {
   );
 }
 
-Widget jobDetailsCard(context, model, i,  onPress) {
+Widget jobDetailsCard(context, model, i,  onPress, show) {
   return Padding(
     padding: const EdgeInsets.only(bottom: 15.0),
     child: Container(
@@ -705,10 +705,12 @@ Widget sessionCard(context, model, i) {
   );
 }
 
-Widget myMenteesCard(context, model, i) {
+Widget myMenteesCard(context, model, i, isClient) {
   return InkWell(
     onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>  JobDetails() ));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>  JobDetails(
+        isClient: isClient,
+      ) ));
     },
     child: Padding(
       padding: const EdgeInsets.only(top : 5, bottom: 10.0),

@@ -108,6 +108,7 @@ class JobDetails extends StatelessWidget {
                   return assignedCard(context, assignDrList, index);
                 }),
                 const SizedBox(height: 10,),
+                isClient == true ?
                 ListView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -116,8 +117,9 @@ class JobDetails extends StatelessWidget {
                       return jobDetailsCard(context, jobs, index,
                             (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => ViewNotes(isAdd: isClient,)));
-                        },);
+                        }, false);
                     })
+                    : const SizedBox.shrink()
               ],
             ),
           ),

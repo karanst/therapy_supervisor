@@ -291,7 +291,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 height: 120,
-                width: MediaQuery.of(context).size.width/2.5,
+                width: MediaQuery.of(context).size.width/2.4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -418,12 +418,12 @@ class _HomeState extends State<Home> {
         secTitleText("My Mentees", context, 18),
         const SizedBox(height: 15,),
         ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: mantees.length,
             itemBuilder: (context, index){
           return myMenteesCard(
-            context, mantees, index
+            context, mantees, index, false
           );
         })
       ],
@@ -590,7 +590,7 @@ class _HomeState extends State<Home> {
               _secondHeader(),
            //   _banner(),
              // _availableFeature()
-              SizedBox(height: 15,),
+             const SizedBox(height: 15,),
               _menteesCard()
             ],
           ),

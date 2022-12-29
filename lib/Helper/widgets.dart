@@ -9,6 +9,7 @@ Text titleText(String data, context, double fSize){
     color: Theme.of(context).colorScheme.fontColor,
   ),);
 }
+
 Text subTitleText(String data, context, double fSize){
   return Text(data,
     textAlign: TextAlign.center,
@@ -18,6 +19,7 @@ Text subTitleText(String data, context, double fSize){
       color: Theme.of(context).colorScheme.fontClr,
     ),);
 }
+
 Text secTitleText(String data, context, double size ){
   return Text(data,
     style:  TextStyle(
@@ -27,6 +29,7 @@ Text secTitleText(String data, context, double size ){
       //Theme.of(context).colorScheme.fontColor,
     ),);
 }
+
 Widget textBtn( onPress, context){
   return TextButton(onPressed: onPress, child: secTitleText("Resend", context, 16),);
 }
