@@ -37,7 +37,7 @@ extension colors on ColorScheme {
 
 
   Color get secColor =>
-      this.brightness == Brightness.dark ? colors.whit : colors.secondary ;
+      this.brightness == Brightness.dark ? colors.secondary : colors.secondary ;
 
   Color get btnColor =>
       this.brightness == Brightness.dark ? whiteTemp : primary;

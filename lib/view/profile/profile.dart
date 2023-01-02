@@ -155,8 +155,10 @@ class _ProfileState extends State<Profile> {
             // profileCard(context, 80, "No of Coins", "120", "assets/icons/coins.png"),
             // profileCard(context, 80, "No of Stars", "(2/20)",  "assets/icons/stars.png"),
             //
-            profileCard(context, 80, "Phone Number", "+61987654321",  "assets/icons/telephone.png"),
-            profileCard(context, 80, "Email Address", "dummy12@gmail.com",  "assets/icons/mail.png"),
+            profileCard(context, 80, "Phone Number", "+61987654321",  "assets/icons/telephone.png", false),
+            profileCard(context, 80, "Email Address", "dummy12@gmail.com",  "assets/icons/mail.png", false),
+            profileCard(context, 80, "Discipline", "Clinical Psychology",  "assets/icons/about.png", false),
+            profileCard(context, 80, "Location", "Canberra, Australia",  "assets/icons/mail.png", true),
             // profileCard(context, 120, "About Me", "Lorem ipsum is placeholder text commonly"
             //     " used in the graphic, print, and publishing "
             //     "industries for previewing layouts and visual mockups",  "assets/icons/about.png"),

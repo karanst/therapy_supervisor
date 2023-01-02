@@ -47,7 +47,7 @@ class _ClientDetailsState extends State<ClientDetails> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                subTitleText("Patient's Name", context, 12),
+                                subTitleText("Client's Name", context, 12),
                                 titleText("John Wick", context, 12),
                               ],
                             ),
@@ -89,6 +89,16 @@ class _ClientDetailsState extends State<ClientDetails> {
                               children: [
                                 subTitleText("Gender", context, 12),
                                 titleText("Male", context, 12),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                subTitleText("Location", context, 12),
+                                titleText("Canberra, Australia", context, 12),
                               ],
                             ),
                             const SizedBox(

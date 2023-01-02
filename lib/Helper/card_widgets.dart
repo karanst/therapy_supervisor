@@ -220,7 +220,7 @@ Widget leaderCard(context, model, i, rank, coins) {
   // );
 }
 
-Widget profileCard(context, double height, String label, content, iconImage) {
+Widget profileCard(context, double height, String label, content, iconImage, bool icons) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0, left: 20, right: 20),
     child: Container(
@@ -242,6 +242,11 @@ Widget profileCard(context, double height, String label, content, iconImage) {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            icons ?
+              const  Icon(
+                Icons.location_on_outlined,
+                color: colors.primary,)
+                :
             Image.asset(
               iconImage,
               height: 20,
@@ -626,7 +631,7 @@ Widget notificationCard(context, model, i) {
               width: MediaQuery.of(context).size.width / 1.5,
               child: Text(
                 "${model[i]['description']}",
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.start,
                 maxLines: 2,
                 style: TextStyle(
                   overflow: TextOverflow.ellipsis,
@@ -709,7 +714,7 @@ Widget myMenteesCard(context, model, i, isClient) {
   return InkWell(
     onTap: (){
       Navigator.push(context, MaterialPageRoute(builder: (context)=>  JobDetails(
-        isClient: isClient,
+        isClient: true,
       ) ));
     },
     child: Padding(
@@ -1023,7 +1028,7 @@ Widget noteCard(context, model, i){
 
 Widget availableCardWidget(context, model, i) {
   return Padding(
-    padding: const EdgeInsets.only(bottom: 15.0),
+    padding: const EdgeInsets.only(top: 10,bottom: 15.0),
     child: Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 3,
@@ -1056,19 +1061,21 @@ Widget availableCardWidget(context, model, i) {
                 ),
                 Column(
                   children: [
-                    const Text(
+                     Text(
                       "Time",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: TextStyle(fontWeight: FontWeight.w500, color: Theme.of(context).colorScheme.fontColor),
                     ),
+                    const  SizedBox(height: 5),
                     subTitleText("${model[i]['time']}", context, 14),
                   ],
                 ),
                 Column(
                   children: [
-                    const Text(
+                     Text(
                       "Date",
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: TextStyle(fontWeight: FontWeight.w500,  color: Theme.of(context).colorScheme.fontColor),
                     ),
+                   const  SizedBox(height: 5),
                     subTitleText("${model[i]['date']}", context, 13),
                   ],
                 ),
